@@ -1,68 +1,301 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+/* frontend/src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  /* overflow: hidden; */ /* Remova esta linha */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: calc(45%); /* Ajuste para ir até um pouco antes do centro da tela */
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto; /* Adicione esta linha para permitir a rolagem vertical */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 20px; /* Pequena distância entre o formulário e o canto direito da tela */
+  margin-top: auto; /* Centraliza verticalmente */
+  margin-bottom: auto; /* Centraliza verticalmente */
+}
+
+.main-text {
+  text-align: center;
+  margin-bottom: 2rem; /* Espaço entre a imagem e o formulário */
+  width: 100%; /* Garante que o texto ocupe a largura total do contêiner */
+}
+
+.header img {
+  width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: auto;
+}
+
+.right form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.right input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.right button {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  border: none;
+  background-color: #646cff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.right button:hover {
+  background-color: #535bf2;
+}
+
+.top-right {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+}
+
+.top-right a {
+  color: #646cff;
+  text-decoration: none;
+}
+
+.top-right a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+    right: 0;
   }
-  a:hover {
-    color: #747bff;
+
+  .left, .right {
+    justify-content: center;
+    text-align: center;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .right {
+    align-items: center;
   }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.header-left, .header-center, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left .icon, .header-right .icon {
+  cursor: pointer;
+  margin-left: 1rem;
+  font-size: 1.5rem; /* Ajuste o tamanho do ícone */
+}
+
+.header-center {
+  flex: 1;
+  justify-content: center;
+}
+
+.search-bar {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.restaurant-list-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 80px; /* Espaço para o header */
+  padding-bottom: 80px; /* Espaço para o footer */
+  min-height: 100vh; /* Garante que a página ocupe a altura total da janela */
+  overflow: hidden; /* Evita rolagem desnecessária */
+}
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start; /* Alinha os itens à esquerda */
+  padding: 2rem;
+  flex-grow: 1; /* Garante que a lista ocupe o espaço disponível */
+  overflow: auto; /* Permite rolagem apenas quando necessário */
+  min-height: 0; /* Remove a altura mínima */
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  height: 200px; /* Define uma altura fixa para os cards */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem; /* Espaço entre os cards */
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 200px; /* Define uma altura fixa para a imagem */
+  object-fit: cover;
+}
+
+.restaurant-card h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.restaurant-card p {
+  padding: 0 1rem 1rem;
+  color: #666;
+  flex: 1; /* Garante que o texto ocupe o espaço disponível */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-center {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .search-bar {
+    width: calc(100% - 2rem);
+  }
+}
+
+.restaurant-details-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+  padding-top: 80px; /* Espaço para o header */
+  padding-bottom: 80px; /* Espaço para o footer */
+}
+
+.restaurant-details {
+  text-align: center;
+  padding: 2rem;
+}
+
+.restaurant-details img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.item-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px; /* Increase the width of the items */
+  height: 200px; /* Adjust the height of the items */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.item-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.item-card p {
+  padding: 0 1rem 1rem;
+  color: #666;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurant-details h2 {
+  text-align: left; /* Align the titles to the left */
+  margin-left: 2rem; /* Add some left margin for better alignment */
 }

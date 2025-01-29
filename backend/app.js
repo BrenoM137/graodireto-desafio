@@ -19,13 +19,15 @@ app.use(express.json());
 
 // Routes
 
-const authRoutes = require('./routes/auth');
-const restaurantRoutes = require('./routes/restaurants');
+const authRoutes = require('./routes/userRoutes');
+const restaurantRoutes = require('./routes/restaurantRoutes');
 
 app.post('/auth/register', authRoutes);
 app.post('/auth/login', authRoutes);
 app.get('/user/:id', authRoutes);
-app.use('/restaurants', restaurantRoutes);
+app.post('/restaurants/register', restaurantRoutes);
+app.get('/restaurants', restaurantRoutes);
+app.get('/restaurants/:id', restaurantRoutes);
 
 // Credentials
 const dbUser = process.env.DB_USER;
