@@ -1,12 +1,12 @@
-// frontend/src/components/Header.tsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaHome, FaUser } from 'react-icons/fa';
 import { useUser } from '../context/UserContext';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
-    const { userName, searchTerm, setSearchTerm } = useUser();
+    const location = useLocation();
+    const { user, searchTerm, setSearchTerm } = useUser();
 
     const handleHomeClick = () => {
         navigate('/restaurants');
@@ -19,20 +19,22 @@ const Header: React.FC = () => {
     return (
         <header className="header">
             <div className="header-left">
-                <FaHome onClick={handleHomeClick} className="icon" />
+                <FaHome onClick={handleHomeClick} className="icon" color="#EA1D2C" />
             </div>
             <div className="header-center">
-                <input
-                    type="text"
-                    placeholder="Pesquise por restaurantes ou pratos..."
-                    className="search-bar"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
+                {location.pathname === '/restaurants' && (
+                    <input
+                        type="text"
+                        placeholder="Procure por restaurantes ou pratos..."
+                        className="search-bar"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                )}
             </div>
             <div className="header-right">
-                <span>Olá, {userName || 'Visitante'}!</span>
-                <FaUser onClick={handleProfileClick} className="icon" />
+                <span>Olá, {user?.username || 'Convidado'}!</span>
+                <FaUser onClick={handleProfileClick} className="icon" color="#EA1D2C" />
             </div>
         </header>
     );

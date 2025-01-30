@@ -8,6 +8,7 @@ interface Item {
     name: string;
     description: string;
     price: number;
+    image?: string;
 }
 
 interface Restaurant {
@@ -45,15 +46,23 @@ const RestaurantDetails: React.FC = () => {
         <div className="restaurant-details-page">
             <Header />
             <div className="restaurant-details">
-                <h1>{restaurant.name}</h1>
-                <img src={restaurant.image} alt={restaurant.name} />
-                <p>{restaurant.description}</p>
-                <p><strong>Endereço:</strong> {restaurant.address}</p>
-                <p><strong>Número:</strong> {restaurant.phone}</p>
+
+                <div className="restaurant-details-banner">
+                    <img src={`http://localhost:3000/${restaurant.image}`} alt={restaurant.name} />
+                </div>
+                <div className="restaurant-details-info">
+                    <h1>{restaurant.name}</h1>
+                    <p>{restaurant.description}</p>
+                    <div className="details">
+                        <p><strong>Endereço:</strong> {restaurant.address}</p>
+                        <p><strong>Número:</strong> {restaurant.phone}</p>
+                    </div>
+                </div>
                 <h2>Pratos</h2>
                 <div className="item-list">
                     {restaurant.dishes.map((dish, index) => (
                         <div key={index} className="item-card">
+                            {dish.image && <img src={`http://localhost:3000/${dish.image}`} alt={dish.name} />}
                             <h3>{dish.name}</h3>
                             <p>{dish.description}</p>
                             <p>${dish.price.toFixed(2)}</p>
@@ -64,6 +73,7 @@ const RestaurantDetails: React.FC = () => {
                 <div className="item-list">
                     {restaurant.drinks.map((drink, index) => (
                         <div key={index} className="item-card">
+                            {drink.image && <img src={`http://localhost:3000/${drink.image}`} alt={drink.name} />}
                             <h3>{drink.name}</h3>
                             <p>${drink.price.toFixed(2)}</p>
                         </div>

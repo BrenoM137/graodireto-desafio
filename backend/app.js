@@ -3,8 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const path = require('path');
 const app = express();
 const port = 3000;
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Config JSON response
 app.use(express.json())

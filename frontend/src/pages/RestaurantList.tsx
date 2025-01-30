@@ -60,11 +60,12 @@ const RestaurantList: React.FC = () => {
     return (
         <div className="restaurant-list-page">
             <Header />
+            <h1 className={'center-text'}>Restaurantes</h1>
             <div className="restaurant-list">
                 {filteredRestaurants.map((restaurant) => (
                     <div key={restaurant._id} className="restaurant-card" onClick={() => handleCardClick(restaurant._id)}>
-                        <img src={restaurant.image} alt={restaurant.name} />
-                        <h2>{restaurant.name}</h2>
+                        <img src={`http://localhost:3000/${restaurant.image}`} alt={restaurant.name} />
+                        <h3>{restaurant.name}</h3>
                         <p>{restaurant.description}</p>
                     </div>
                 ))}

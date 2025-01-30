@@ -1,4 +1,5 @@
 const Restaurant = require('../models/restaurantModel');
+const path = require('path');
 
 class RestaurantController {
 
@@ -11,14 +12,22 @@ class RestaurantController {
             return res.status(422).json({ msg: 'Todos os campos são obrigatórios!' });
         }
 
+        const imagePath = path.join('images', image);
+
         const restaurant = new Restaurant({
             name,
             description,
             address,
             phone,
-            image,
-            dishes,
-            drinks
+            image: imagePath,
+            dishes: dishes.map(dish => ({
+                ...dish,
+                image: dish.image ? path.join('images', dish.image) : null
+            })),
+            drinks: drinks.map(drink => ({
+                ...drink,
+                image: drink.image ? path.join('images', drink.image) : null
+            }))
         });
 
         try {

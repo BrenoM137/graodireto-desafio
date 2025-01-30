@@ -108,7 +108,7 @@ class UserController {
             const secret = process.env.SECRET;
             const token = jwt.sign({ id: user._id }, secret);
 
-            res.status(200).json({ msg: 'Autenticação realizada com sucesso!', token, userName: user.username });
+            res.status(200).json({ msg: 'Autenticação realizada com sucesso!', token, user });
         } catch (err) {
             console.log(err);
             res.status(500).json({ msg: 'Erro no servidor! Tente novamente mais tarde.' });

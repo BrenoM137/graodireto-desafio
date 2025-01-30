@@ -1,5 +1,14 @@
 // frontend/src/types/apiResponses.ts
+export interface User {
+    _id: string;
+    username: string;
+    email: string;
+    address: string;
+    phone: string;
+}
+
 export interface LoginResponse {
-    userName: string;
+    msg: string;
     token: string;
+    user: User;
 }

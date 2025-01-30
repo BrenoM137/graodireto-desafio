@@ -5,6 +5,7 @@ const dishSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: String,
     description: {
         type: String,
         required: true
@@ -20,6 +21,7 @@ const drinkSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: String,
     price: {
         type: Number,
         required: true
