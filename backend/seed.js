@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const Restaurant = require('./models/restaurantModel');
 const User = require('./models/userModel');
 
@@ -86,9 +87,8 @@ const seedDatabase = async () => {
                 email: 'fred@graodireto.com.br',
                 address: 'Endereço 1',
                 phone: '987654321',
-                password: '123Fred'
+                password: await bcrypt.hash('123Fred', 12)
             },
-
         ];
 
         await Restaurant.insertMany(restaurants);
